@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 let giphyURL = 'https://api.giphy.com/v1/gifs/search';
+let key = '5c1b64e50bbd46baa32e0411eb27651a';
 
 let dummyData = [{
   embed_url : "https://giphy.com/embed/Yzk0KZhgcPdbW",
@@ -90,11 +91,14 @@ class GiphyApp extends React.Component{
 
   // use axios to get data, filter, and put in constructor
   search(query){
+    console.log('hi', query);
     axios.get(giphyURL, {
-      api_key: process.env.GIPHY_KEY,
-      q: query,
-      limit: 15,
-      rating: 'g',
+      params: {
+        api_key: key,
+        q: query,
+        limit: 15,
+        rating: 'g',
+      }
     })
       .then(gifArr => {
         this.setState({gifObjs: gifArr})
