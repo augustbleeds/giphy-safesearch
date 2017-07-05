@@ -47,11 +47,20 @@ class GifBoard extends React.Component{
 }
 
 class SearchBox extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {text: ''};
+  }
+
+  handleTyping(e){
+    this.setState({text: e.target.value});
+    console.log(this.state.text);
+  }
 
   render(){
     return (
       <form className="form-group">
-        <input type="text" placeholder="Search me!" className="form-control" /> <input className="btn btn-default form-control" type="submit" value="Search" />
+        <input onChange={e => this.handleTyping(e)} value={this.state.text} type="text" placeholder="Search me!" className="form-control" /> <input className="btn btn-default form-control" type="submit" value="Search" />
       </form>
     );
   }
