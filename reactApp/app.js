@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
-giphyURL = 'https://api.giphy.com/v1/gifs/search';
+let giphyURL = 'https://api.giphy.com/v1/gifs/search';
 
 let dummyData = [{
   embed_url : "https://giphy.com/embed/Yzk0KZhgcPdbW",
@@ -59,10 +60,17 @@ class SearchBox extends React.Component{
     console.log(this.state.text);
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.search(this.state.text);
+    this.setState({text: ''});
+  }
+
   render(){
     return (
       <form className="form-group">
-        <input onChange={e => this.handleTyping(e)} value={this.state.text} type="text" placeholder="Search me!" className="form-control" /> <input className="btn btn-default form-control" type="submit" value="Search" />
+        <input onChange={e => this.handleTyping(e)} value={this.state.text} type="text" placeholder="Search me!" className="form-control" />
+        <input onClick={e => this.handleSubmit(e)} className="btn btn-default form-control" type="submit" value="Search" />
       </form>
     );
   }
@@ -70,7 +78,7 @@ class SearchBox extends React.Component{
 /*
 TODO:
 1. search in GiphyApp
-2. pass down gifObjs as a prop to GifBoard
+2. pass down gifObjs as a prop to GifBoard / pass down search to SearchBox
 
 */
 class GiphyApp extends React.Component{
@@ -86,7 +94,7 @@ class GiphyApp extends React.Component{
       api_key: process.env.GIPHY_KEY,
       q: query,
       limit: 15,
-      rating: g,
+      rating: 'g',
     })
       .then(gifArr => {
         this.setState({gifObjs: gifArr})
@@ -102,12 +110,12 @@ class GiphyApp extends React.Component{
         </div>
         <div className="row" >
           <div className="col-xs-4 col-xs-offset-4">
-            <SearchBox />
+            <SearchBox search={q => this.search(q)}/>
           </div>
         </div>
         <div className="row">
           <div className="col-xs-8 col-xs-offset-2">
-          <GifBoard />
+          <GifBoard content={this.props.gifObjs}/>
           </div>
         </div>
      </div>
