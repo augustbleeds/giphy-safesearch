@@ -65,8 +65,23 @@ class SearchBox extends React.Component{
     );
   }
 }
+/*
+TODO:
+1. search in GiphyApp
+2. pass down gifObjs as a prop to GifBoard
 
+*/
 class GiphyApp extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state = {gifObjs: []};
+  }
+
+  // use axios to get data, filter, and put in constructor
+  search(query){
+
+  }
 
   render(){
     return (
