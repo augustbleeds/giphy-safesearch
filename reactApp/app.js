@@ -3,5 +3,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<p>React lives!</p>,
+ReactDOM.render(<p>Inception of my new app!</p>,
    document.getElementById('root'));
