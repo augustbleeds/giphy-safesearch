@@ -5,34 +5,34 @@ import axios from 'axios';
 let giphyURL = 'https://api.giphy.com/v1/gifs/search';
 let key = '5c1b64e50bbd46baa32e0411eb27651a';
 
-let dummyData = [{
-  embed_url : "https://giphy.com/embed/Yzk0KZhgcPdbW",
-  rating: "g",
-}, {
-  embed_url: "https://giphy.com/embed/d31xaEJuFKwdgmqc",
-  rating: "g",
-}, {
-  embed_url: "https://giphy.com/embed/138btjfXAn1xyo",
-  rating: "g",
-}, {
-  embed_url: "https://giphy.com/embed/CidndLIDBmYo0",
-  rating: "g",
-}, {
-  embed_url : "https://giphy.com/embed/Yzk0KZhgcPdbW",
-  rating: "g",
-}, {
-  embed_url: "https://giphy.com/embed/d31xaEJuFKwdgmqc",
-  rating: "g",
-}, {
-  embed_url: "https://giphy.com/embed/138btjfXAn1xyo",
-  rating: "g",
-}, {
-  embed_url: "https://giphy.com/embed/CidndLIDBmYo0",
-  rating: "g",
-}, {
-  embed_url: "https://giphy.com/embed/CidndLIDBmYo0",
-  rating: "g",
-}];
+// let dummyData = [{
+//   embed_url : "https://giphy.com/embed/Yzk0KZhgcPdbW",
+//   rating: "g",
+// }, {
+//   embed_url: "https://giphy.com/embed/d31xaEJuFKwdgmqc",
+//   rating: "g",
+// }, {
+//   embed_url: "https://giphy.com/embed/138btjfXAn1xyo",
+//   rating: "g",
+// }, {
+//   embed_url: "https://giphy.com/embed/CidndLIDBmYo0",
+//   rating: "g",
+// }, {
+//   embed_url : "https://giphy.com/embed/Yzk0KZhgcPdbW",
+//   rating: "g",
+// }, {
+//   embed_url: "https://giphy.com/embed/d31xaEJuFKwdgmqc",
+//   rating: "g",
+// }, {
+//   embed_url: "https://giphy.com/embed/138btjfXAn1xyo",
+//   rating: "g",
+// }, {
+//   embed_url: "https://giphy.com/embed/CidndLIDBmYo0",
+//   rating: "g",
+// }, {
+//   embed_url: "https://giphy.com/embed/CidndLIDBmYo0",
+//   rating: "g",
+// }];
 
 class GifItem extends React.Component{
   render(){
@@ -75,12 +75,7 @@ class SearchBox extends React.Component{
     );
   }
 }
-/*
-TODO:
-1. search in GiphyApp
-2. pass down gifObjs as a prop to GifBoard / pass down search to SearchBox
 
-*/
 class GiphyApp extends React.Component{
 
   constructor(props){
