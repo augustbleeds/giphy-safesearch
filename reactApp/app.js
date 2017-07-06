@@ -45,7 +45,7 @@ class GifItem extends React.Component{
 class GifBoard extends React.Component{
   render(){
     return (
-        <div>{dummyData.map(GifObj => <GifItem url={GifObj.embed_url} />)}</div>
+        <div>{this.props.content.map(GifObj => <GifItem url={GifObj.embed_url} />)}</div>
     );
   }
 }
@@ -58,7 +58,6 @@ class SearchBox extends React.Component{
 
   handleTyping(e){
     this.setState({text: e.target.value});
-    console.log(this.state.text);
   }
 
   handleSubmit(e){
@@ -91,7 +90,6 @@ class GiphyApp extends React.Component{
 
   // use axios to get data, filter, and put in constructor
   search(query){
-    console.log('hi', query);
     axios.get(giphyURL, {
       params: {
         api_key: key,
@@ -101,8 +99,7 @@ class GiphyApp extends React.Component{
       }
     })
       .then(gifArr => {
-        this.setState({gifObjs: gifArr})
-        console.log(this.state.gifObjs);
+        this.setState({gifObjs: gifArr.data.data})
       })
       .catch(err => console.log('Error in search', err));
   }
@@ -119,7 +116,7 @@ class GiphyApp extends React.Component{
         </div>
         <div className="row">
           <div className="col-xs-8 col-xs-offset-2">
-          <GifBoard content={this.props.gifObjs}/>
+          <GifBoard content={this.state.gifObjs}/>
           </div>
         </div>
      </div>
